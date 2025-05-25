@@ -1,0 +1,164 @@
+{
+  "info": {
+    "_postman_id": "f6d9d4f4-42fe-4141-9002-b3b627d07dee",
+    "name": "Restaurant-API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+    "_exporter_id": "33279699"
+  },
+  "item": [
+    {
+      "name": "RefreshToken",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"username\": \"user\",\r\n  \"password\": \"user\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "localhost:8081/login"
+      },
+      "response": []
+    },
+    {
+      "name": "AddRestaurant",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzQ4MTU0MDkzfQ.j02Jta8C7c9rfeD_wTqqEzDPBZdDEZUk4FynA1DEkFo"
+          }
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "restaurant",
+              "value": "{\"restaurantName\":\"No Idea Restaurant\",\"restaurantCategory\": 2}",
+              "type": "text"
+            },
+            {
+              "key": "picture",
+              "type": "file",
+              "src": "/C:/Users/chean/OneDrive/Pictures/Screenshots/Screenshot 2024-08-07 122810.png"
+            }
+          ]
+        },
+        "url": "localhost:8081/restaurant/add"
+      },
+      "response": []
+    },
+    {
+      "name": "AddReview",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzQ4MTUwNzA4fQ.kaCi_G01Uk2sBzTkD4JltSax2ZG6i1SHLgpNwuXEqq0"
+          }
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"rating\": 1,\r\n  \"review\": \"Very Good\",\r\n  \"restaurantId\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "localhost:8081/restaurant/rate"
+      },
+      "response": []
+    },
+    {
+      "name": "GetAllRestaurants",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzQ4MTUwNzA4fQ.kaCi_G01Uk2sBzTkD4JltSax2ZG6i1SHLgpNwuXEqq0"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": "localhost:8081/restaurant/all"
+      },
+      "response": []
+    },
+    {
+      "name": "GetRestaurantsByNameOrCategroy",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzQ4MTU0MDkzfQ.j02Jta8C7c9rfeD_wTqqEzDPBZdDEZUk4FynA1DEkFo"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8081/restaurant/get?name=Restaurant",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "restaurant",
+            "get"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Restaurant"
+            },
+            {
+              "key": "category",
+              "value": "1",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetRestaurantAverageRate",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzQ4MTU0MDkzfQ.j02Jta8C7c9rfeD_wTqqEzDPBZdDEZUk4FynA1DEkFo"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8081/restaurant/getAvgRate?restaurantId=1",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "restaurant",
+            "getAvgRate"
+          ],
+          "query": [
+            {
+              "key": "restaurantId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
